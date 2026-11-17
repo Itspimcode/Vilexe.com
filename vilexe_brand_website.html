@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VILEXE — Game Studio</title>
+    
+    <!-- Google Fonts: Inter & Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Brand Color Palette Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        vilexe: {
+                            primary: '#2C1E5B',     // Deep indigo/violet (logo wordmark)
+                            lavender: '#8B7BB8',    // Soft lavender (logo backdrop)
+                            mid: '#4C378C',         // Rich purple hover
+                            surface: '#F7F5FC',     // Soft lavender-tinted background
+                            tint: '#E8E2F4',        // Subtle border & pill surface
+                            dark: '#1B123A',        // Deep plum text
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Montserrat', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'vilexe': '0 24px 48px -12px rgba(44, 30, 91, 0.16)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Subtle geometric background grid */
+        .bg-grid-lavender {
+            background-size: 44px 44px;
+            background-image: 
+                linear-gradient(to right, rgba(44, 30, 91, 0.045) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(44, 30, 91, 0.045) 1px, transparent 1px);
+        }
+
+        /* Ambient floating glow */
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.45; transform: scale(1); }
+            50% { opacity: 0.75; transform: scale(1.06); }
+        }
+
+        .animate-glow {
+            animation: pulseGlow 9s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-vilexe-surface bg-grid-lavender text-vilexe-dark font-sans antialiased selection:bg-vilexe-primary selection:text-white flex flex-col justify-between relative overflow-x-hidden">
+
+    <!-- Ambient Lavender Background Orbs -->
+    <div class="fixed top-1/4 -left-24 w-96 h-96 bg-vilexe-lavender/30 rounded-full blur-3xl pointer-events-none animate-glow"></div>
+    <div class="fixed bottom-1/4 -right-24 w-96 h-96 bg-vilexe-primary/15 rounded-full blur-3xl pointer-events-none"></div>
+
+    <!-- Top Spacer for Vertical Balance -->
+    <div class="h-6"></div>
+
+    <!-- =====================================================================
+         CENTERED SINGLE-SCREEN HERO
+    ====================================================================== -->
+    <main class="relative z-10 w-full max-w-xl mx-auto px-5 py-10 flex flex-col items-center text-center">
+        
+        <!-- Logo Card (Matches your exact lavender backdrop & deep indigo angled wordmark) -->
+        <div class="w-full max-w-md py-10 px-8 rounded-3xl bg-vilexe-lavender shadow-vilexe mb-8 relative overflow-hidden group transition-transform duration-500 hover:scale-[1.02]">
+            <div class="absolute inset-0 bg-gradient-to-tr from-vilexe-primary/15 via-transparent to-white/20 pointer-events-none"></div>
+            <svg class="w-full max-w-[270px] mx-auto h-auto text-vilexe-primary relative z-10" viewBox="0 0 385 68" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="VILEXE Logo">
+                <!-- V -->
+                <path d="M4 8H21.5L36.5 43.5L51.5 8H69L44.5 60H28.5L4 8Z" fill="currentColor"/>
+                <!-- I -->
+                <path d="M79 8H95.5V60H79V8Z" fill="currentColor"/>
+                <!-- L -->
+                <path d="M111 8H127.5V46.5H164L156.5 60H111V8Z" fill="currentColor"/>
+                <!-- E -->
+                <path d="M174 8H229L221.5 21H190.5V28H222.5L215.5 40.5H190.5V47H229L221.5 60H174V8Z" fill="currentColor"/>
+                <!-- X -->
+                <path d="M236 8H255.5L269 25.5L282.5 8H302L279.5 34L303.5 60H284L269 42L254 60H234.5L258.5 34L236 8Z" fill="currentColor"/>
+                <!-- E -->
+                <path d="M312 8H367L359.5 21H328.5V28H360.5L353.5 40.5H328.5V47H367L359.5 60H312V8Z" fill="currentColor"/>
+            </svg>
+        </div>
+
+        <!-- Minimal Tagline -->
+        <h1 class="font-display font-extrabold text-2xl sm:text-3xl text-vilexe-primary tracking-tight">
+            We are going to be building some games.
+        </h1>
+        <p class="mt-2.5 text-sm sm:text-base text-vilexe-dark/70 max-w-md">
+            Independent game studio. Stay tuned for our first projects.
+        </p>
+
+        <!-- Subtle Copyable Email Badge -->
+        <div class="mt-7 flex items-center justify-center">
+            <button id="copy-email-btn" type="button" title="Click to copy email" class="px-5 py-3 rounded-2xl bg-white/90 hover:bg-vilexe-tint/70 text-vilexe-primary border border-vilexe-tint shadow-sm font-semibold text-sm transition-all duration-200 inline-flex items-center space-x-2.5 group">
+                <svg class="w-4 h-4 text-vilexe-mid" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+                <span id="display-email-text">contact@vilexe.com</span>
+                <svg class="w-4 h-4 opacity-60 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                </svg>
+            </button>
+        </div>
+
+    </main>
+
+    <!-- Minimal Footer -->
+    <footer class="relative z-10 py-6 text-center text-xs text-vilexe-dark/55">
+        &copy; <span id="year"></span> VILEXE. All rights reserved.
+    </footer>
+
+    <!-- Subtle Feedback Toast -->
+    <div id="toast" class="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 px-5 py-3 rounded-2xl bg-vilexe-primary text-white text-xs font-semibold shadow-vilexe opacity-0 translate-y-6 pointer-events-none transition-all duration-300">
+        Copied!
+    </div>
+
+    <script>
+        // =========================================================================
+        // CONFIGURATION: Official studio contact email address
+        // =========================================================================
+        const CONTACT_EMAIL = 'contact@vilexe.com';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('year').textContent = new Date().getFullYear();
+            document.getElementById('display-email-text').textContent = CONTACT_EMAIL;
+
+            const copyEmailBtn = document.getElementById('copy-email-btn');
+
+            // Copy email to clipboard using reliable fallback
+            copyEmailBtn.addEventListener('click', () => {
+                const tempInput = document.createElement('input');
+                tempInput.value = CONTACT_EMAIL;
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                document.execCommand('copy');
+                document.body.removeChild(tempInput);
+                showToast(`Copied ${CONTACT_EMAIL} to clipboard`);
+            });
+        });
+
+        let toastTimer;
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.textContent = msg;
+            toast.classList.remove('opacity-0', 'translate-y-6');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-6');
+            }, 2500);
+        }
+    </script>
+</body>
+</html>
